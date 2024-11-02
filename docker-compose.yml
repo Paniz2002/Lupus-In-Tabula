@@ -1,0 +1,11 @@
+version: '3'
+services:
+  lupus-game:
+    image: node:18  # Usa un'immagine Node.js LTS
+    container_name: lupus-in-fabula
+    working_dir: /app
+    volumes:
+      - .:/app  # Monta la directory corrente all'interno del contenitore
+    ports:
+      - "3000:3000"  # Espone la porta 3000 sulla rete locale
+    command: bash -c "npm install && node server.js"

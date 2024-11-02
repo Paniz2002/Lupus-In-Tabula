@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lupus in Fabula - Giocatore</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="player.js"></script>
+</head>
+<body>
+<div id="join-section">
+    <h1>Lupus in Fabula - Giocatore</h1>
+    <label for="player-name">Nome Giocatore:</label>
+    <input type="text" id="player-name" placeholder="Inserisci il tuo nome"/>
+    <button id="join-game">Entra in Partita</button>
+</div>
+
+<div id="game-info" style="display: none;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div style="text-align: center; width: 100%;">
+            <p id="player-username" style="font-size: 1.5em; font-weight: bold;">Username: </p>
+            <p id="player-role" style="font-size: 1.5em; font-weight: bold;">Ruolo: </p>
+        </div>
+        <button id="toggle-rules-btn" onclick="toggleRules()" style="align-self: flex-start;">
+            Mostra Regole
+        </button>
+    </div>
+
+    <div id="rules" style="display:none;">
+        <h3>Regole di Lupus in Fabula</h3>
+        <p>
+            Nel gioco ci sono due fazioni: quella dei LUPI e quella dei VILLICI. <br>
+            Lo scopo dei Lupi è di eliminare tutti i Villici. Viceversa quello dei Villici è di linciare tutti i Lupi.
+            Il gioco si divide in due fasi: la notte e il giorno. <br>
+            Di notte i lupi sbranano un giocatore. Di giorno si discute e si lincia qualcuno, sperando che sia un lupo.
+        </p>
+        <h4>Scopo</h4>
+        <p>
+            Il master dichiara la partita finita con una vittoria dei villici se questi linciano tutti i lupi.
+            I lupi sono invece dichiarati vincitori se in un qualunque momento sono in numero pari agli umani ancora vivi.
+            È sempre l’intera fazione a vincere, quindi anche i morti partecipano alla vittoria!
+        </p>
+        <h4>Ruoli</h4>
+        <table>
+            <tr><th>Simbolo</th><th>Nome</th><th>Descrizione</th></tr>
+            <tr><td>🔮</td><td>VEGGENTE</td><td>Indica uno dei giocatori, il master gli rivela se è un lupo.</td></tr>
+            <tr><td>🤺</td><td>CAVALIERE</td><td>Sceglie una persona da proteggere; se scelta dai lupi come vittima, non muore.</td></tr>
+            <tr><td>😈</td><td>INDEMONIATO</td><td>Sta dalla parte dei lupi, ha il ruolo di confondere le idee.</td></tr>
+            <tr><td>✝️</td><td>MEDIUM</td><td>Indica una persona uccisa per sapere se è un lupo.</td></tr>
+            <tr><td>🎭</td><td>MITOMANE</td><td>Durante la seconda notte può indicare una persona e assumere il suo ruolo.</td></tr>
+            <tr><td>🐹</td><td>CRICETO MANNARO</td><td>Gioca per conto suo, vince se arriva vivo alla fine della partita.</td></tr>
+            <tr><td>🤪</td><td>MATTO</td><td>Vince se si fa uccidere durante il giorno.</td></tr>
+            <tr><td>🧐</td><td>MASSONI</td><td>Villici che durante la prima notte si vedono.</td></tr>
+            <tr><td>🔫</td><td>GIUSTIZIERE</td><td>Può uccidere una persona durante la notte, poi diventa un villico normale.</td></tr>
+            <tr><td>🔍</td><td>INVESTIGATORE</td><td>Di notte può identificare il ruolo di un altro giocatore.</td></tr>
+            <tr><td>🧙‍♀️</td><td>STREGA</td><td>Vegli su veggente e cavaliere, viene vista come un lupo dal veggente.</td></tr>
+            <tr><td>👼</td><td>ANGELO</td><td>Una volta per partita può resuscitare un morto.</td></tr>
+            <tr><td>🤒</td><td>APPESTATO</td><td>Muore e porta con sé un lupo se ucciso di notte.</td></tr>
+            <tr><td>☝️</td><td>INSINUO</td><td>Di notte sceglie una persona che verrà vista come lupo dal veggente.</td></tr>
+            <tr><td>🧥</td><td>CAVALIERE NERO</td><td>Indemoniato che uccide se la sua vittima è la stessa del cavaliere normale.</td></tr>
+            <tr><td>💀</td><td>BOIA</td><td>Gioca con i lupi, cerca di indovinare il ruolo di un giocatore e ucciderlo.</td></tr>
+            <tr><td>💋</td><td>PROSTITUTA</td><td>Passa la notte con un villico; se amata, i lupi non possono ucciderla.</td></tr>
+            <tr><td>✨</td><td>ILLUSIONISTA</td><td>Blocca il ruolo di un giocatore per una notte, gioca con i lupi.</td></tr>
+            <tr><td>🏴‍☠️</td><td>CAPITANO UNCINO</td><td>Si lega a una persona; se viene eliminato, la notte successiva muore anche il legato.</td></tr>
+            <tr><td>🦁</td><td>AMMAESTRATORE</td><td>Obbliga i lupi a sbranare una persona indicata se non è un lupo.</td></tr>
+            <tr><td>😡</td><td>ROSICONE</td><td>Uccide un'altra persona se viene eliminato al ballottaggio.</td></tr>
+            <tr><td>👹</td><td>WENDIGO</td><td>Di notte indovina il ruolo di un giocatore, vince se rimane solo con un altro.</td></tr>
+            <tr><td>🥦</td><td>SPACCINO</td><td>Modifica un giocatore affinché il suo potere agisca su un altro.</td></tr>
+            <tr><td>🐝</td><td>APE</td><td>Uccide un giocatore ma muore la notte successiva.</td></tr>
+            <tr><td>💕</td><td>PLAYLOVER</td><td>Scopre se due persone fanno parte della stessa fazione.</td></tr>
+            <tr><td>⚰️</td><td>BECCHINO</td><td>Scopre se un ruolo specifico è ancora vivo.</td></tr>
+            <tr><td>🎰</td><td>LUDOPATICO</td><td>Infezione notturna; vince se la maggioranza diventa ludopatica.</td></tr>
+            <tr><td>🔥</td><td>PIROMANE</td><td>Incendia tutti i giocatori benzinati; vince da solo.</td></tr>
+            <tr><td>🏋️</td><td>PERSONAL TRAINER</td><td>Potenzia un giocatore a sua scelta, rendendo più forte il suo ruolo.</td></tr>
+            <tr><td>⚖️</td><td>AVVOCHAD</td><td>Diventa l’avvocato di un giocatore, vincendo se vince lui.</td></tr>
+            <tr><td>🧙‍♂️</td><td>DRUIDO</td><td>Ha due vite, gioca con i villici.</td></tr>
+            <tr><td>🧛</td><td>VAMPIRO</td><td>Trasforma un altro in vampiro che lo aiuterà per il resto del gioco.</td></tr>
+            <tr><td>🎲</td><td>PENGWIN</td><td>Scommette su un giocatore; vince se questi rimane vivo fino alla fine.</td></tr>
+            <tr><td>📦</td><td>CORRIERE</td><td>Scambia due giocatori durante la notte, invertendo i poteri su di loro.</td></tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

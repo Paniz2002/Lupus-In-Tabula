@@ -1,0 +1,118 @@
+/* Impostazioni di base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #3d291f; /* Marrone scuro di sfondo */
+    color: #f4f4f4; /* Testo chiaro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: #ba5f35; /* Rosso caldo per titoli */
+}
+
+button, input[type="text"] {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Stile del bottone */
+button {
+    background-color: #ba5f35;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #7a3f25;
+}
+
+/* Stile dell'input */
+input[type="text"] {
+    width: 80%;
+    margin-top: 5px;
+    border: 2px solid #ba5f35;
+}
+
+/* Sezione "join" */
+#join-section {
+    background-color: #4e3628;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Sezione "game-info" */
+#game-info {
+    background-color: #4e3628;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+#rules {
+    background-color: #2f1c13;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+    display: none;
+}
+
+/* Tabella dei ruoli */
+table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+    color: #f4f4f4;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #ba5f35;
+    text-align: left;
+}
+
+th {
+    background-color: #7a3f25;
+}
+
+td {
+    background-color: #5c3e2a;
+}
+
+#connected-players-list,
+#selected-roles-list {
+    list-style: none;
+    padding: 10px;
+    background-color: #4e3628;
+    border-radius: 8px;
+}
+
+input[readonly] {
+    background-color: #5c3e2a;
+    border: none;
+    color: #f4f4f4;
+    font-weight: bold;
+}
+
+h4{
+    margin-top: 10px;
+}

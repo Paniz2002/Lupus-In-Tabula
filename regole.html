@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+ <head>
+  <title>IntelliJ Markdown Preview</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none';
+script-src 'self';
+style-src 'unsafe-inline';
+img-src file: *;
+connect-src 'none';
+font-src * data: *;
+object-src 'none';
+media-src 'none';
+child-src 'none';">
+  <style>/* Reworked by IntelliJ Team The MIT License (MIT) Copyright (c) JetBrains Adapted from https://github.com/sindresorhus/github-markdown-css The MIT License (MIT) Copyright (c) Sindre Sorhus &lt;sindresorhus@gmail.com&gt; (sindresorhus.com) Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */ @font-face { font-family: octicons-anchor; src: url(data:font/woff;charset=utf-8;base64,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) format('woff'); } body { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, freesans, sans-serif; font-size: 14px; line-height: 1.6; word-wrap: break-word; margin: 0 2em; } strong { font-weight: bold; } img { border: 0; } input { color: inherit; font: inherit; margin: 0; line-height: normal; } html input[disabled] { cursor: default; } input[type="checkbox"] { box-sizing: border-box; padding: 0; } body * { box-sizing: border-box; } input { font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; } a { text-decoration: none; } a:hover, a:active { text-decoration: underline; } hr { height: 1px; padding: 0; margin: 20px 0; border: 0 none; } hr:before { display: table; content: ""; } hr:after { display: table; clear: both; content: ""; } blockquote { margin: 0; } ul, ol { padding: 0; margin-top: 0; margin-bottom: 0; } ol ol, ul ol { list-style-type: lower-roman; } ul ul ol, ul ol ol, ol ul ol, ol ol ol { list-style-type: lower-alpha; } dd { margin-left: 0; } .octicon { font: normal normal normal 16px/1 octicons-anchor; display: inline-block; text-decoration: none; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; } .octicon-link:before { content: '\f05c'; } .markdown-body &gt; *:first-child { margin-top: 0 !important; } .markdown-body &gt; *:last-child { margin-bottom: 0 !important; } .anchor { position: absolute; top: 0; left: 0; display: block; padding-right: 6px; padding-left: 30px; margin-left: -30px; } .anchor:focus { outline: none; } h1, h2, h3, h4, h5, h6 { position: relative; margin-top: 1em; margin-bottom: 16px; font-weight: bold; line-height: 1.4; } h1 .octicon-link, h2 .octicon-link, h3 .octicon-link, h4 .octicon-link, h5 .octicon-link, h6 .octicon-link { display: none; color: #000; vertical-align: middle; } h1:hover .anchor, h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover .anchor { padding-left: 8px; margin-left: -30px; text-decoration: none; } h1:hover .anchor .octicon-link, h2:hover .anchor .octicon-link, h3:hover .anchor .octicon-link, h4:hover .anchor .octicon-link, h5:hover .anchor .octicon-link, h6:hover .anchor .octicon-link { display: inline-block; } h1 { font-size: 2.2em; padding-top: 0.6em; } h1 .anchor { line-height: 1; } h2 { font-size: 1.8em; line-height: 1.2; padding-top: 0.6em; } h2 .anchor { line-height: 1.2; } h3 { font-size: 1.3em; line-height: 1; padding-top: 0.6em; } h3 .anchor { line-height: 1.2; } h4 { font-size: 1em; } h4 .anchor { line-height: 1.2; } h5 { font-size: 1em; } h5 .anchor { line-height: 1.1; } h6 { font-size: 1em; } h6 .anchor { line-height: 1.1; } p, blockquote, ul, ol, dl, table, pre { margin-top: 16px; margin-bottom: 16px; } pre.frontmatter-header { background-color: transparent; margin: 0; padding: 0; } ul, ol { padding-left: 2em; } ul ul, ul ol, ol ol, ol ul { margin-top: 0; margin-bottom: 0; } li &gt; p { margin-top: 0; margin-bottom: 0; } dl { padding: 0; } dl dt { padding: 0; margin-top: 16px; font-size: 1em; font-style: italic; font-weight: bold; } dl dd { padding: 0 16px; margin-bottom: 16px; } blockquote { padding: 10px 10px 10px 16px; border-left: 2px solid; border-radius: 0 3px 3px 0; } blockquote &gt; :first-child { margin-top: 0; } blockquote &gt; :last-child { margin-bottom: 0; } table { display: block; width: 100%; overflow: auto; word-break: normal; border-collapse: collapse; border-spacing: 0; font-size: 1em; } table th { font-weight: bold; } table th, table td { padding: 6px 13px; background: transparent; } table tr { border-top: 1px solid; } img { max-width: 100%; box-sizing: border-box; } code { font: 0.9em "JetBrains Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace; padding: 0.2em 0.4em; margin: 2px; border-radius: 3px; } pre &gt; code { padding: 0; margin: 0; font-size: 100%; word-break: normal; white-space: pre; background: transparent; border: 0; } .highlight { margin-bottom: 16px; } .highlight pre, pre { font: 0.85em "JetBrains Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace; padding: 16px; overflow: auto; line-height: 1.45; border-radius: 3px; } pre code { display: inline; max-width: initial; padding: 0; margin: 0; overflow: initial; line-height: inherit; word-wrap: normal; background-color: transparent; border: 0; } pre code:before, pre code:after { content: normal; } kbd { font: 0.9em "JetBrains Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace; padding: 0.2em 0.4em; margin: 2px; border-radius: 3px; } .task-list-item { list-style-type: none; } .task-list-item + .task-list-item { margin-top: 3px; } .task-list-item input { margin: 0 0.35em 0.25em -0.6em; vertical-align: middle; } :checked + .radio-label { z-index: 1; position: relative; } span.user-del { text-decoration: line-through; } ::-webkit-scrollbar { width: 6px; height: 6px; } ::-webkit-scrollbar-thumb { -webkit-border-radius: 10px; } ::-webkit-scrollbar-track:vertical { -webkit-box-shadow: -1px 0 0 #ededed; } ::-webkit-scrollbar-track { background-color: transparent; } ::-webkit-scrollbar { width: 6px; }</style>
+  <style>:root { --default-font-size: 13px; } body { background-color: rgba(30, 31, 34, 255.0); font-size: var(--default-font-size) !important; } body, p, blockquote, ul, ol, dl, table, pre, code, tr { color: rgba(188, 190, 196, 255.0); } a { color: rgba(107, 155, 250, 255.0); } table td, table th { border: 1px solid rgba(57, 59, 64, 255.0); } hr { background-color: rgba(57, 59, 64, 255.0); } kbd, tr { border: 1px solid rgba(57, 59, 64, 255.0); } h6 { color: rgba(111, 115, 122, 255.0); } blockquote { border-left: 2px solid rgba(107, 155, 250, 0.4); } blockquote, code, pre { background-color: rgba(212, 222, 231, 0.09803921568627451); } ::-webkit-scrollbar { width: 14px; height: 14px; background-color: rgba(0, 0, 0, 0); } ::-webkit-scrollbar-track { background-color: rgba(0, 0, 0, 0); } ::-webkit-scrollbar-track:hover { background-color: rgba(0, 0, 0, 0); } ::-webkit-scrollbar-thumb { background-color: rgba(255, 255, 255, 0.149020); border-radius: 7px; border-width: 3px; border-style: solid; border-color: rgba(0, 0, 0, 0); background-clip: padding-box; outline: 1px solid rgba(38, 38, 38, 0.349020); outline-offset: -3px; } ::-webkit-scrollbar-thumb:hover { background-color: rgba(255, 255, 255, 0.301961); border-radius: 7px; border-width: 3px; border-style: solid; border-color: rgba(0, 0, 0, 0); background-clip: padding-box; outline: 1px solid rgba(38, 38, 38, 0.549020); outline-offset: -3px; } ::-webkit-scrollbar-corner { background-color: rgba(0, 0, 0, 0); } ::-webkit-scrollbar-button { display:none; }</style>
+  <style>/* Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. */ .code-fence-highlighter-copy-button { display: flex; position: absolute; float: left; margin-left: -1em; margin-top: -1em; } .code-fence-highlighter-copy-button-icon { visibility: hidden; max-width: 1em; } .code-fence:hover .code-fence-highlighter-copy-button-icon { visibility: visible; /*noinspection CssUnknownTarget*/ content: url("copy-button-copy-icon.png"); } .code-fence:hover .code-fence-highlighter-copy-button:hover .code-fence-highlighter-copy-button-icon { /*noinspection CssUnknownTarget*/ content: url("copy-button-copy-icon-hovered.png"); cursor: pointer; } .code-fence-highlighter-copy-button .tooltiptext { visibility: hidden; width: 120px; background-color: rgba(85, 85, 85, 0.4); color: #fff; text-align: center; border-radius: 6px; padding: 2px 0; position: absolute; font-size: 10px; z-index: 1; top: -4px; left: 120%; opacity: 0; transition: opacity 0.3s; } .code-fence-highlighter-copy-button:hover .tooltiptext { visibility: visible; opacity: 1; }</style>
+  <style>/* Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. */ .run-icon &gt; img { max-width: 1em; vertical-align: text-top; margin-right: 0.3em; } .code-block { position: absolute; left: 1em; } .hidden { display: none; }</style>
+ </head>
+ <body>
+  <div md-src-pos="0..6335">
+   <h2 id="regole--ruoli-lupus" md-src-pos="0..23">Regole &amp; ruoli Lupus</h2>
+   <h3 id="regole" md-src-pos="25..35">Regole</h3>
+   <ul md-src-pos="36..385">
+    <li md-src-pos="36..106">Nel gioco ci sono due fazioni: quella dei LUPI e quella dei VILLICI.</li>
+    <li md-src-pos="107..158">Lo scopo dei Lupi è di eliminare tutti i Villici.</li>
+    <li md-src-pos="159..217">Viceversa quello dei Villici è di linciare tutti i Lupi.</li>
+    <li md-src-pos="218..273">Il gioco si divide in due fasi: la notte e il giorno.</li>
+    <li md-src-pos="274..314">Di notte i lupi sbranano un giocatore.</li>
+    <li md-src-pos="315..385">Di giorno si discute e si lincia qualcuno, sperando che sia un lupo.</li>
+   </ul>
+   <h3 id="scopo" md-src-pos="387..396">Scopo</h3>
+   <p md-src-pos="397..810"><span md-src-pos="397..495">Il master dichiara la partita finita con una vittoria dei villici se questi linciano tutti i lupi.</span> <span md-src-pos="496..605">I lupi sono invece dichiarati vincitori se in un qualunque momento sono in numero pari agli umani ancora vivi</span> (<span md-src-pos="607..619">per esempio,</span> <span md-src-pos="620..639">2 lupi e 2 villici,</span> <span md-src-pos="640..652">oppure 1 e 1</span>): <span md-src-pos="655..724">in tal caso i lupi sbranano i villici rimasti senza tanti complimenti</span>! <span md-src-pos="726..761">È sempre l’intera fazione a vincere</span>: <span md-src-pos="763..809">quindi anche i morti partecipano alla vittoria</span>!</p>
+   <h3 id="ruoli" md-src-pos="812..821">Ruoli</h3>
+   <table md-src-pos="822..6335">
+    <thead>
+     <tr md-src-pos="822..846">
+      <th md-src-pos="823..824"></th>
+      <th md-src-pos="825..831">Nome</th>
+      <th md-src-pos="832..845">Descrizione</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr md-src-pos="861..942">
+      <td md-src-pos="862..866">🔮</td>
+      <td md-src-pos="867..881"><strong md-src-pos="868..880">VEGGENTE</strong></td>
+      <td md-src-pos="882..941">Indica uno dei giocatori, master gli rivela se è un lupo.</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="943..1075">
+      <td md-src-pos="944..947">🤺</td>
+      <td md-src-pos="948..963"><strong md-src-pos="949..962">CAVALIERE</strong></td>
+      <td md-src-pos="964..1074">Sceglie una persona da proteggere (non se stesso), se quest'ultima è scelta dai lupi come vittima non muore.</td>
+     </tr>
+     <tr md-src-pos="1076..1163">
+      <td md-src-pos="1077..1081">😈</td>
+      <td md-src-pos="1082..1099"><strong md-src-pos="1083..1098">INDEMONIATO</strong></td>
+      <td md-src-pos="1100..1162">Sta dalla parte dei lupi, ha il ruolo di confondere le idee.</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="1164..1236">
+      <td md-src-pos="1165..1169">✝️</td>
+      <td md-src-pos="1170..1182"><strong md-src-pos="1171..1181">MEDIUM</strong></td>
+      <td md-src-pos="1183..1235">Indica una persona uccisa per sapere se è un lupo.</td>
+     </tr>
+     <tr md-src-pos="1237..1350">
+      <td md-src-pos="1238..1242">🎭</td>
+      <td md-src-pos="1243..1257"><strong md-src-pos="1244..1256">MITOMANE</strong></td>
+      <td md-src-pos="1258..1349">Durante la seconda notte può indicare una persona in vita, assumendo il suo stesso ruolo.</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="1351..1518">
+      <td md-src-pos="1352..1356">🐹</td>
+      <td md-src-pos="1357..1378"><strong md-src-pos="1358..1377">CRICETO MANNARO</strong></td>
+      <td md-src-pos="1379..1517">Il criceto mannaro gioca per conto suo. Non ha poteri speciali e se arriva vivo a fine partita, ruba la vittoria ed è l'unico vincitore.</td>
+     </tr>
+     <tr md-src-pos="1519..1582">
+      <td md-src-pos="1520..1524">🤪</td>
+      <td md-src-pos="1525..1536"><strong md-src-pos="1526..1535">MATTO</strong></td>
+      <td md-src-pos="1537..1581">Vince se si fa uccidere durante il giorno.</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="1583..1651">
+      <td md-src-pos="1584..1588">🧐</td>
+      <td md-src-pos="1589..1602"><strong md-src-pos="1590..1601">MASSONI</strong></td>
+      <td md-src-pos="1603..1650">Villici che durante la prima notte si vedono.</td>
+     </tr>
+     <tr md-src-pos="1652..1763">
+      <td md-src-pos="1653..1657">🔫</td>
+      <td md-src-pos="1658..1675"><strong md-src-pos="1659..1674">GIUSTIZIERE</strong></td>
+      <td md-src-pos="1676..1762">Può uccidere una persona a scelta durante la notte, dopo diventa un normale villico.</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="1764..1870">
+      <td md-src-pos="1765..1769">🔍</td>
+      <td md-src-pos="1770..1789"><strong md-src-pos="1771..1788">INVESTIGATORE</strong></td>
+      <td md-src-pos="1790..1869">La notte punta il dito su un altro giocatore, Kitano gli dice se ha un ruolo.</td>
+     </tr>
+     <tr md-src-pos="1871..2005">
+      <td md-src-pos="1872..1879">🧙‍♀️</td>
+      <td md-src-pos="1880..1892"><strong md-src-pos="1881..1891">STREGA</strong></td>
+      <td md-src-pos="1893..2004">È il veggente dei lupi, individua chi sono il veggente e il cavaliere, dal veggente viene vista come un lupo.</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="2006..2067">
+      <td md-src-pos="2007..2011">👼</td>
+      <td md-src-pos="2012..2024"><strong md-src-pos="2013..2023">ANGELO</strong></td>
+      <td md-src-pos="2025..2066">Una volta a partita resuscita un morto.</td>
+     </tr>
+     <tr md-src-pos="2068..2177">
+      <td md-src-pos="2069..2073">🤒</td>
+      <td md-src-pos="2074..2089"><strong md-src-pos="2075..2088">APPESTATO</strong></td>
+      <td md-src-pos="2090..2176">Villico normale, se viene ucciso di notte muore anche il primo lupo in senso orario.</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="2178..2309">
+      <td md-src-pos="2179..2183">☝️</td>
+      <td md-src-pos="2184..2197"><strong md-src-pos="2185..2196">INSINUO</strong></td>
+      <td md-src-pos="2198..2308">Di notte indica una persona, questa verrà vista come lupo dal veggente indipendentemente dal suo vero ruolo.</td>
+     </tr>
+     <tr md-src-pos="2310..2455">
+      <td md-src-pos="2311..2315">🧥</td>
+      <td md-src-pos="2316..2336"><strong md-src-pos="2317..2335">CAVALIERE NERO</strong></td>
+      <td md-src-pos="2337..2454">Indemoniato classico, di notte apre gli occhi, indica una persona, se è stata indicata dal cavaliere normale MUORE.</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="2456..2600">
+      <td md-src-pos="2457..2461">💀</td>
+      <td md-src-pos="2462..2472"><strong md-src-pos="2463..2471">BOIA</strong></td>
+      <td md-src-pos="2473..2599">Gioca con i lupi, una sola notte indica un altro giocatore, se indovina il suo ruolo questo muore, altrimenti muore il boia.</td>
+     </tr>
+     <tr md-src-pos="2601..2810">
+      <td md-src-pos="2602..2606">💋</td>
+      <td md-src-pos="2607..2623"><strong md-src-pos="2608..2622">PROSTITUTA</strong></td>
+      <td md-src-pos="2624..2809">Passa la notte con un altro giocatore, se questo è un villico, non può essere uccisa dai lupi se questi la indicano. Muore se indica un lupo, o se il suo amante viene ucciso dai lupi.</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="2811..2933">
+      <td md-src-pos="2812..2815">✨</td>
+      <td md-src-pos="2816..2834"><strong md-src-pos="2817..2833">ILLUSIONISTA</strong></td>
+      <td md-src-pos="2835..2932">È primo che apre gli occhi di notte, blocca il ruolo del giocatore che punta, gioca con i lupi.</td>
+     </tr>
+     <tr md-src-pos="2934..3122">
+      <td md-src-pos="2935..2942">🏴‍☠️</td>
+      <td md-src-pos="2943..2964"><strong md-src-pos="2944..2963">CAPITANO UNCINO</strong></td>
+      <td md-src-pos="2965..3121">Gioca con i cattivi. Di notte si lega ad una persona, se viene eliminato durante il giorno, la notte successiva morirà anche la persona a cui si è legato.</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="3123..3288">
+      <td md-src-pos="3124..3128">🦁</td>
+      <td md-src-pos="3129..3148"><strong md-src-pos="3130..3147">AMMAESTRATORE</strong></td>
+      <td md-src-pos="3149..3287">Una volta a partita indica un giocatore, se non è un lupo, i lupi sono obbligati ad ucciderlo, altrimenti possono uccidere chi vogliono.</td>
+     </tr>
+     <tr md-src-pos="3289..3408">
+      <td md-src-pos="3290..3294">😡</td>
+      <td md-src-pos="3295..3309"><strong md-src-pos="3296..3308">ROSICONE</strong></td>
+      <td md-src-pos="3310..3407">Gioca con i villici, se viene eliminato al ballottaggio, indica una persona e morirà anche lei.</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="3409..3631">
+      <td md-src-pos="3410..3414">👹</td>
+      <td md-src-pos="3415..3428"><strong md-src-pos="3416..3427">WENDIGO</strong></td>
+      <td md-src-pos="3429..3630">Tutte le notti, indica una persona e dice il ruolo al DM. Se indovina, uccide quella persona. Vince se rimane da solo con un altro. Viene visto come lupo dal veggente. Non può essere ucciso dai lupi.</td>
+     </tr>
+     <tr md-src-pos="3632..3959">
+      <td md-src-pos="3633..3637">🥦</td>
+      <td md-src-pos="3638..3652"><strong md-src-pos="3639..3651">SPACCINO</strong></td>
+      <td md-src-pos="3653..3958">Gioca con i cattivi. Di notte sceglie una persona e la modifica, questa non riuscirà ad usare correttamente il suo “potere”. Se il modificato è il veggente, avrà dal master la risposta sbagliata. Per tutti gli altri ruoli, da modificati il loro “effetto” si applica alla persona a dx di quella indicata.</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="3960..4078">
+      <td md-src-pos="3961..3965">🐝</td>
+      <td md-src-pos="3966..3975"><strong md-src-pos="3967..3974">APE</strong></td>
+      <td md-src-pos="3976..4077">Come il giustiziere può ammazzare un giocatore di notte, ma quando lo fa muore la notte successiva.</td>
+     </tr>
+     <tr md-src-pos="4079..4223">
+      <td md-src-pos="4080..4084">💕</td>
+      <td md-src-pos="4085..4100"><strong md-src-pos="4086..4099">PLAYLOVER</strong></td>
+      <td md-src-pos="4101..4222">Di notte indica due persone, il master dirà si se fanno parte della stessa squadra o no se sono di due fazioni diverse.</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="4224..4382">
+      <td md-src-pos="4225..4229">⚰️</td>
+      <td md-src-pos="4230..4244"><strong md-src-pos="4231..4243">BECCHINO</strong></td>
+      <td md-src-pos="4245..4381">Una volta a partita chiede al master un ruolo. Il master gli risponde si se il giocatore con quel ruolo è vivo o no se invece è morto.</td>
+     </tr>
+     <tr md-src-pos="4383..4593">
+      <td md-src-pos="4384..4388">🎰</td>
+      <td md-src-pos="4389..4405"><strong md-src-pos="4390..4404">LUDOPATICO</strong></td>
+      <td md-src-pos="4406..4592">Gioca e vince da solo, ogni notte indica una persona, quella persona diventa essa stessa ludopatica. Quando la maggioranza dei giocatori vivi diventano ludopatici, il ludopatico vince.</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="4594..4788">
+      <td md-src-pos="4595..4599">🔥</td>
+      <td md-src-pos="4600..4614"><strong md-src-pos="4601..4613">PIROMANE</strong></td>
+      <td md-src-pos="4615..4787">Ogni notte butta benzina addosso a una persona. In una notte a sua scelta deciderà di accendere la miccia, una volta fatto tutti gli imbenzinati moriranno. Vince da solo.</td>
+     </tr>
+     <tr md-src-pos="4789..5150">
+      <td md-src-pos="4790..4795">🏋️</td>
+      <td md-src-pos="4796..4818"><strong md-src-pos="4797..4817">PERSONAL TRAINER</strong></td>
+      <td md-src-pos="4819..5149">Gioca coi buoni, di notte indica una persona ed essa otterrà un potenziamento in base al suo ruolo. Se potenziato il veggente saprà il ruolo esatto di chi ha indicato. Il cavaliere salverà chiunque indichi, anche se preso di mira da ruoli speciali. I lupi uccideranno la vittima designata anche se essa è protetta dal cavaliere.</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="5151..5329">
+      <td md-src-pos="5152..5156">⚖️</td>
+      <td md-src-pos="5157..5171"><strong md-src-pos="5158..5170">AVVOCHAD</strong></td>
+      <td md-src-pos="5172..5328">Durante la prima notte indica una persona e ne diventa l'avvocato. Lo difende indipendente dal suo ruolo e vince solo se vince la fazione del suo cliente.</td>
+     </tr>
+     <tr md-src-pos="5330..5482">
+      <td md-src-pos="5331..5338">🧙‍♂️</td>
+      <td md-src-pos="5339..5351"><strong md-src-pos="5340..5350">DRUIDO</strong></td>
+      <td md-src-pos="5352..5481">Gioca coi villici, di notte non viene ucciso al primo colpo (ha due vite). Se invece viene ucciso di giorno muore direttamente.</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="5483..5840">
+      <td md-src-pos="5484..5488">🧛</td>
+      <td md-src-pos="5489..5502"><strong md-src-pos="5490..5501">VAMPIRO</strong></td>
+      <td md-src-pos="5503..5839">Gioca coi lupi, la prima notte indica qualcuno e lo vampirizza. La persona scelta sarà il compagno del vampiro per tutta la durata della partita, e manterrà il suo ruolo se ce l'ha. Il cavaliere ad esempio si sveglierà due volte di notte, sia per uccidere qualcuno come vampiro, sia per proteggere qualcuno col suo ruolo di cavaliere.</td>
+     </tr>
+     <tr md-src-pos="5841..5998">
+      <td md-src-pos="5842..5846">🎲</td>
+      <td md-src-pos="5847..5860"><strong md-src-pos="5848..5859">PENGWIN</strong></td>
+      <td md-src-pos="5861..5997">Gioca da solo, al primo turno indica una persona e scommette su di lui. Se a fine partita quella persona rimane viva il Pengwin vince.</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="5999..6335">
+      <td md-src-pos="6000..6004">📦</td>
+      <td md-src-pos="6005..6019"><strong md-src-pos="6006..6018">CORRIERE</strong></td>
+      <td md-src-pos="6020..6334">Gioca coi lupi, ogni notte indica due persone e le "scambia". Ad esempio: se durante la prima notte sceglie Simone e Marra e i lupi indicano Marra non sarà lui a morire, bensì Simone. Stessa cosa per qualsiasi altro ruolo che dovesse indicare Simone o Davide, i poteri di tutti avranno sempre effetto sull'altro.</td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+ </body>
+</html>

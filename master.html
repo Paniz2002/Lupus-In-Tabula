@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Partita - Master</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="master.js"></script>
+</head>
+<body>
+<div id="roles-selection">
+    <h1>Gestione Partita - Master</h1>
+    <h2>Seleziona i ruoli</h2>
+    <div id="roles-container"></div>
+    <button id="create-game">Crea Partita</button>
+</div>
+
+<div id="game-summary" style="display:none;">
+    <h2>Partita in corso</h2>
+    <p><strong>ID Partita:</strong> <span id="game-id"></span></p>
+    <p><strong>Link per i giocatori:</strong> <input type="text" id="game-link" readonly /></p>
+    <button id="copy-link">Copia link</button>
+
+    <h3>Riepilogo Ruoli</h3>
+    <ul id="selected-roles-list"></ul>
+
+    <h3>Giocatori Connessi</h3>
+    <ul id="connected-players-list"></ul>
+</div>
+</body>
+</html>
