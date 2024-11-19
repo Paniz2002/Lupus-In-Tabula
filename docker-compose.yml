@@ -9,3 +9,27 @@ services:
     ports:
       - "3000:3000"  # Espone la porta 3000 sulla rete locale
     command: bash -c "npm install && node server.js"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/lupus  # Stringa di connessione a MongoDB
+    depends_on:
+      - mongo  # Assicura che MongoDB sia avviato prima di lupus-game
+    networks:
+      - lupus-network  # Collegamento alla rete comune
+
+  mongo:
+    image: mongo:5  # Usa l'immagine MongoDB
+    container_name: lupus-mongo
+    ports:
+      - "27017:27017"  # Espone la porta 27017 per MongoDB
+    volumes:
+      - lupus-mongo-data:/data/db  # Volume per persistenza dati
+    networks:
+      - lupus-network  # Collegamento alla rete comune
+
+networks:
+  lupus-network:
+    driver: bridge
+
+volumes:
+  lupus-mongo-data:
+    driver: local

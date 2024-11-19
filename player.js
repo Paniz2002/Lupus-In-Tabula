@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         socket.emit("joinGame", gameId, playerName, (response) => {
             if (response.success) {
-                const newUrl = `${window.location.origin}/index.html?gameId=${gameId}&playerId=${response.playerId}`;
+                const newUrl = `${window.location.origin}/index.html?gameId=${gameId}&playerId=${playerName}`;
                 window.history.pushState({ path: newUrl }, '', newUrl);
                 joinSection.style.display = "none";
                 gameInfo.style.display = "block";
