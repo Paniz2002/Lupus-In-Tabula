@@ -1,5 +1,5 @@
-# Lupus-In-Fabula
-Semplice sito per gestire le partite di lupus in fabula, i ruoli sono presi da https://github.com/CerberoPodcast/regole-lupus
+# Lupus-In-Tabula
+Semplice sito per gestire le partite di lupus in tabula, i ruoli sono presi da https://github.com/CerberoPodcast/regole-lupus
 
 Per ora è molto semplice perché ha semplicemente l'obbiettivo di giocare in locale con amici, con del tempo implementerò delle nuove funzionalità.
 
